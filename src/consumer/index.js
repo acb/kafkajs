@@ -119,6 +119,8 @@ module.exports = ({
       }
 
       clearTimeout(restartTimeout)
+      const e = new Error();
+      logger.info('Consumer stopped, stack trace for stop call', { groupId, stack: e.stack })
       logger.info('Stopped', { groupId })
     } catch (e) {
       logger.error(`Caught error when stopping the consumer: ${e.message}`, {
